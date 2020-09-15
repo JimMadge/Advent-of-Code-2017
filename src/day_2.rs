@@ -1,4 +1,5 @@
 pub mod day2 {
+    use itertools::Itertools;
     // use std::error::Error;
 
     // pub fn read_csv() -> Result<Vec<Vec<i32>>, Box<dyn Error>> {
@@ -40,7 +41,7 @@ pub mod day2 {
         array
     }
 
-    pub fn checksum(array: Vec<Vec<i32>>) -> i32 {
+    pub fn checksum(array: &Vec<Vec<i32>>) -> i32 {
         let mut checksum = 0;
 
         for row in array {
@@ -50,15 +51,36 @@ pub mod day2 {
         }
         checksum
     }
+
+    pub fn checksum2(array: &Vec<Vec<i32>>) -> i32 {
+        let mut checksum = 0;
+
+        for row in array {
+            for pair in row.iter().permutations(2) {
+                if pair[0] % pair[1] == 0 {
+                    checksum += pair[0] / pair[1];
+                    break
+                }
+            }
+        }
+        checksum
+    }
 }
 
 #[cfg(test)]
 mod tests{
     use super::day2::checksum;
+    use super::day2::checksum2;
 
     #[test]
     fn test_checksum() {
         let a = vec![vec![5,1,9,5], vec![7,5,3], vec![2,4,6,8]];
-        assert_eq!(checksum(a), 18)
+        assert_eq!(checksum(&a), 18)
+    }
+
+    #[test]
+    fn test_checksum2() {
+        let a = vec![vec![5,9,2,8], vec![9,4,7,3], vec![3,8,6,5]];
+        assert_eq!(checksum2(&a), 9)
     }
 }
