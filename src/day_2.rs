@@ -29,6 +29,7 @@ pub mod day2 {
             .has_headers(false)
             .from_path("input/day2.txt")
             .expect("Unable to read file");
+
         for result in rdr.records() {
             let record = result.unwrap();
 
