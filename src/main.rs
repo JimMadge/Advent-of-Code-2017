@@ -1,8 +1,8 @@
 mod day_1;
 mod day_2;
 
-pub use day_1::day1;
-pub use day_2::day2;
+use day_1::day1;
+use day_2::day2;
 
 fn main() {
     let numbers = day1::numbers_from_file("input/day1.txt");
