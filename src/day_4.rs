@@ -8,10 +8,11 @@ pub mod day4 {
         passphrases
     }
 
-    pub fn count_valid_passphrases(passphrases: &String) -> i32 {
+    pub fn count_valid_passphrases(passphrases: &String,
+                                   validator: fn(&str) -> bool) -> i32 {
         let mut sum = 0;
         for passphrase in passphrases.lines() {
-            if valid_passphrase(passphrase) {
+            if validator(passphrase) {
                 sum += 1;
             }
         }
@@ -25,16 +26,6 @@ pub mod day4 {
             }
         }
         true
-    }
-
-    pub fn count_valid_passphrases2(passphrases: &String) -> i32 {
-        let mut sum = 0;
-        for passphrase in passphrases.lines() {
-            if valid_passphrase2(passphrase) {
-                sum += 1;
-            }
-        }
-        sum
     }
 
     pub fn valid_passphrase2(passphrase: &str) -> bool {

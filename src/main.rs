@@ -16,6 +16,6 @@ fn main() {
     println!("day 2 - part 1:\t{}", day2::checksum2(&array));
 
     let abc = day4::read_passphrases("input/day4.txt");
-    println!("day 4 - part 1:\t{}", day4::count_valid_passphrases(&abc));
-    println!("day 4 - part 2:\t{}", day4::count_valid_passphrases2(&abc));
+    println!("day 4 - part 1:\t{}", day4::count_valid_passphrases(&abc, day4::valid_passphrase));
+    println!("day 4 - part 2:\t{}", day4::count_valid_passphrases(&abc, day4::valid_passphrase2));
 }
