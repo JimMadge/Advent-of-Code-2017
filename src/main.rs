@@ -1,10 +1,12 @@
 mod day_1;
 mod day_2;
 mod day_4;
+mod day_5;
 
 use day_1::day1;
 use day_2::day2;
 use day_4::day4;
+use day_5::day5;
 
 fn main() {
     let numbers = day1::numbers_from_file("input/day1.txt");
@@ -15,7 +17,18 @@ fn main() {
     println!("day 2 - part 1:\t{}", day2::checksum(&array));
     println!("day 2 - part 1:\t{}", day2::checksum2(&array));
 
-    let abc = day4::read_passphrases("input/day4.txt");
-    println!("day 4 - part 1:\t{}", day4::count_valid_passphrases(&abc, day4::valid_passphrase));
-    println!("day 4 - part 2:\t{}", day4::count_valid_passphrases(&abc, day4::valid_passphrase2));
+    let passphrases = day4::read_passphrases("input/day4.txt");
+    println!(
+        "day 4 - part 1:\t{}",
+        day4::count_valid_passphrases(&passphrases, day4::valid_passphrase)
+        );
+    println!(
+        "day 4 - part 2:\t{}",
+        day4::count_valid_passphrases(&passphrases, day4::valid_passphrase2)
+        );
+
+    let instructions = day5::read_instructions("input/day5.txt");
+    println!("day 5 - part 1:\t{}", day5::count_steps(instructions));
+    let instructions = day5::read_instructions("input/day5.txt");
+    println!("day 5 - part 1:\t{}", day5::count_steps2(instructions));
 }
